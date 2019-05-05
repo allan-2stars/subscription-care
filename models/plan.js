@@ -1,6 +1,6 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 
-const PlanValidationSchema = Joi.object().keys({
+module.exports.PlanValidationSchema = Joi.object().keys({
     name: Joi.string().required(),
     price: Joi.number()
         .positive()
@@ -13,5 +13,3 @@ const PlanValidationSchema = Joi.object().keys({
         .positive()
         .required()
 });
-
-module.exports = PlanValidationSchema;
