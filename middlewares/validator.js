@@ -53,7 +53,7 @@ const validate = (model, object, scope) => {
     });
 };
 
-module.exports = function(model, scope) {
+module.exports = (model, scope) => {
     return (req, res, next) => {
         const validationResult = validate(model, req.body, scope);
         if (validationResult.error) {
