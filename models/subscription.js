@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 module.exports.SubscriptionValidationSchema = Joi.object().keys({
     planId: Joi.number()
