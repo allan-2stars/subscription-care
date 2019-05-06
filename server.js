@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const Middleware = require('./middlewares/middleware');
-const PORT = process.env.PORT || 5000;
 
 const app = express();
 const PlansController = require('./controllers/plans');
@@ -16,6 +15,7 @@ Middleware(app);
 app.use('/api/plans', PlansController);
 app.use('/api/subscriptions', SubscriptionsController);
 
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`server listening on port ${PORT}`);
 });

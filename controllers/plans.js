@@ -2,11 +2,14 @@ const router = require('express').Router();
 const asyncWrapper = require('../utils/async-wrapper').AsyncWrapper;
 const PlansService = require('../services/plans');
 
+const validator = require('../middlewares/validator');
+
 const plansService = new PlansService();
 
 //GET api/plans
 router.get(
     '/',
+    [validator('Plan')],
     asyncWrapper(async (req, res) => {
         //
         let userId = null;
