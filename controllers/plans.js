@@ -9,7 +9,6 @@ const plansService = new PlansService();
 //GET api/plans
 router.get(
     '/',
-    [validator('Plan')],
     asyncWrapper(async (req, res) => {
         //
         let userId = null;
@@ -33,6 +32,7 @@ router.get(
 //POST api/plans
 router.post(
     '/',
+    [validator('Plan')],
     asyncWrapper(async (req, res) => {
         //
         let plan = await plansService.create(req.body);

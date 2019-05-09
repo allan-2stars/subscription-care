@@ -2,8 +2,7 @@ const Joi = require('@hapi/joi');
 
 const Subscription = require('../models/subscription');
 const Plan = require('../models/plan');
-
-('use strict');
+const ValidationError = require('../errors/validation-error');
 
 let validators = {
     Subscription: {
@@ -57,7 +56,7 @@ module.exports = (model, scope) => {
     return (req, res, next) => {
         const validationResult = validate(model, req.body, scope);
         if (validationResult.error) {
-            throw new Error(validationResult.error.message);
+            throw new ValidationError(validationResult.error.message, model);
         }
         next();
     };
